@@ -1,4 +1,5 @@
 #include <cs50.h>
+#include <ctype.h>
 // math.h included to use the round() function
 #include <math.h>
 #include <stdio.h>
@@ -41,14 +42,13 @@ int validate_text(string text)
 	for (int i = 0; i < text_length; i++)
 	{
 		// If character is between 'a' and 'z' or 'A' and 'Z', it is a letter
-		if ((text[i] >= 'a' && text[i] <= 'z') ||
-			(text[i] >= 'A' && text[i] <= 'Z'))
+		if (isalpha(text[i]))
 		{
 			letters++;
 		}
 		// If character is space ' ' then, there was a word
 		// Two spaces aren't accepted
-		else if (text[i] == ' ' && text[i-1] != ' ')
+		else if (isspace(text[i]) && !isspace(text[i-1]))
 		{
 			words++;
 		}
