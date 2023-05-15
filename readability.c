@@ -11,9 +11,10 @@ int main(void)
 	// Get text for validation
 	string user_Text = get_string("Text: ");
 
-	// Validate text and print grade
+	// Get sentence's grade 
 	int grade = validate_text(user_Text);
 
+	// Check and print grade
 	if (grade < 1)
 	{
 		printf("Before grade 1\n");	
@@ -46,7 +47,8 @@ int validate_text(string text)
 			letters++;
 		}
 		// If character is space ' ' then, there was a word
-		else if (text[i] == ' ')
+		// Two spaces aren't accepted
+		else if (text[i] == ' ' && text[i-1] != ' ')
 		{
 			words++;
 		}
